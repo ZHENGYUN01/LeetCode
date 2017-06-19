@@ -1,0 +1,48 @@
+#include<iostream>
+#include<string>
+#define N 10000
+using namespace std;
+
+int main()
+{
+	int times,p[N],l[N];
+	string s;
+	cin>>s;
+	//cout<<endl;
+	cin>>times;
+	
+	int i=0;
+	while(i<times)
+	{
+		
+		cin>>p[i]>>l[i];
+		i++;
+		//cout<<endl;
+	}
+	int len;
+	
+	for (int m=0;m<times;m++)
+	{
+		string temp="";
+		len=s.size();
+		for (i=p[m]+l[m];i<len;i++)
+		{
+			temp=temp+s[i];
+		}
+		string temp2="";
+		for (i=0;i<p[m]+l[m];i++)
+		{
+			temp2=temp2+s[i];
+		}
+		for(int j=p[m]+l[m]-1;j>=p[m];j--)
+		{
+		
+			temp2=temp2+s[j];
+
+		}
+		s=temp2+temp;
+	}
+
+	cout<<s;
+	return 0;
+}

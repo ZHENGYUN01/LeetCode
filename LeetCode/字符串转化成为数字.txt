@@ -1,0 +1,26 @@
+            int StrToInt(string str) {
+            
+        int len=str.size();
+        char *p=&str[0];
+        int t;
+        int x=0;
+        if(p[0]=='-'){
+            t=-1;
+            p++;
+        }
+		else if(p[0]=='+'){
+            t=1; 
+            p++;
+        }
+        else
+            t=1;
+      
+        while(*p){
+            if(*p<'0'||*p>'9')
+                return 0;
+            x=10*x+*p-48;
+            p++;
+        }
+        
+        return t*x;   
+    }

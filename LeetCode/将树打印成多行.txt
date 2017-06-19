@@ -1,0 +1,30 @@
+vector<vector<int> > Print(TreeNode* pRoot) {
+        	queue<TreeNode*> Q,tmp;
+            vector<vector<int> >ans;
+            vector<int> path;
+            if(pRoot==NULL)
+                return ans;
+            Q.push(pRoot);
+            
+            while(!Q.empty())
+			{
+				while(!Q.empty())
+				{
+					TreeNode *pNode = Q.front();
+					path.push_back(pNode->val);
+					Q.pop();
+					if(pNode->left)
+						tmp.push(pNode->left);
+					if(pNode->right)
+						tmp.push(pNode->right);
+				}
+				ans.push_back(path);
+				path.clear();
+				while(!tmp.empty())
+				{
+					Q.push(tmp.front());
+					tmp.pop();
+				}
+			}
+			return ans;
+		}

@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<string.h>
+
+#define N 200
+int main()
+{	
+	int len=0;
+	int i=0;
+	char a[N];
+	char*p=a;
+	gets(a);
+	len=strlen(a);
+
+	while(*p!='\0')
+	{
+		if(('a'<=*p)&&('c'>=*p))
+			*p='2';
+			
+		else if(('d'<=*p)&&('f'>=*p))
+			*p='3';
+			
+		else if(('g'<=*p)&&('i'>=*p))
+			*p='4';
+		
+		else if(('j'<=*p)&&('l'>=*p))
+			*p='5';
+		
+		else if(('m'<=*p)&&('o'>=*p))
+			*p='6';
+		
+		else if(('p'<=*p)&&('s'>=*p))
+			*p='7';
+		
+		else if(('t'<=*p)&&('v'>=*p))
+			*p='8';
+		
+		else if(('w'<=*p)&&('z'>=*p))
+			*p='9';
+	
+		else if((*p>='A')&&(*p<='Z'))
+		{
+			if(*p=='Z')
+				*p='a';
+			else
+				*p='a'+(*p)-'A'+1;
+		}
+		p++;
+
+	}
+	p=p-len;
+	
+	len=strlen(p);
+	for(i=0;i<len;i++,p++)
+		printf("%c",*p);
+
+	return 0;
+}

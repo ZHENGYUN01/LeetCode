@@ -1,0 +1,15 @@
+void AddBSTreeNode(BSTreeNode *&root, int value)  //½¨Á¢¶þ²æÅÅÐòÊ÷
+{
+if(root==NULL)
+{
+root = new BSTreeNode;
+root->m_iValue = value;
+root->m_pLeft=NULL;
+root->m_pRight=NULL;
+return ;
+}
+if(value<root->m_iValue)
+AddBSTreeNode(root->m_pLeft,value);
+else if(value > root->m_iValue)
+AddBSTreeNode(root->m_pRight,value);
+}

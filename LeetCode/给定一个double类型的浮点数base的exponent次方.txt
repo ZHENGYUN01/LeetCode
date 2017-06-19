@@ -1,0 +1,10 @@
+ double Power(double base, int exponent) {
+        double result=1;
+        for(int i=1;i<=abs(exponent);i++)
+            if(exponent>0)
+            result=base*result;
+            else
+            result=1.0/base*result;
+        	return result;
+    
+    }

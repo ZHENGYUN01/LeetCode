@@ -1,0 +1,10 @@
+//ÎÒµÄ´ð°¸
+if (pRoot2 == NULL)    
+        	return true;  
+		if(pRoot1==NULL)
+            return false;
+
+        if(pRoot1->val==pRoot2->val)
+        	return (HasSubtree(pRoot1->left,pRoot2->left)&&HasSubtree(pRoot1->right,pRoot2->right));           
+        else
+            return (HasSubtree(pRoot1->left,pRoot2)||HasSubtree(pRoot1->right,pRoot2));

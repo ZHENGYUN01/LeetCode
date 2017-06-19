@@ -1,0 +1,17 @@
+int NumberOf1Between1AndN_Solution(int n)
+    {
+        int count=0;
+        int i,temp1;
+        int temp;
+        for(i=1;i<=n;i++)
+		{temp1=i;
+        while(temp1!=0){
+            temp=temp1%10;
+            if(temp==1)
+                count++;
+            temp1=temp1/10;
+        }
+		}
+        return count;
+    
+    }

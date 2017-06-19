@@ -1,0 +1,15 @@
+void Traverse( TreeNode * root)  
+{  
+    if (root == NULL)   
+    {  
+        return;  
+    }  
+    else  
+    {  
+        Traverse(root->left);  
+ 	cout << root->val << "  ";         
+	Traverse(root->right);  
+		
+         
+    }  
+}  

@@ -1,0 +1,29 @@
+ string ReverseSentence(string str) {
+	stack<char> temp;
+	string result="";
+	int len=str.size();
+	if (len<=0)
+		return str;
+	int i=len-1;
+	while(i>=0){
+		while(str[i]==' ')
+		{
+			i--;
+			result=result+' ';
+		}
+		
+		while(str[i]!=' '&&i>=0)
+		{
+			temp.push(str[i]);
+			
+			i--;
+		}
+		while(!temp.empty())
+		{
+			result=result+temp.top();
+			temp.pop();
+		}    
+	}
+	return result;
+	
+    }

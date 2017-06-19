@@ -1,0 +1,19 @@
+bool judge(TreeNode* leftNode,TreeNode* rightNode){
+        if(leftNode->val==rightNode->val)
+        {
+            if(leftNode->left->val==rightNode->right&&leftNode->right->val==rightNode->left->val)
+            	return true;
+        }
+        else 
+            return false;
+        
+        
+    }
+    bool isSymmetrical(TreeNode* pRoot)
+    {
+        if(pRoot==NULL)
+            return true;
+        judge(pRoot->left,pRoot->right);
+        judge(pRoot->right,pRoot->left);           
+    
+    }

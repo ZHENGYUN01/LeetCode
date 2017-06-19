@@ -1,0 +1,23 @@
+vector<int> multiply(const vector<int>& A) {
+    	int len=A.size();
+        int chenji;
+        vector<int> temp={};
+        if(len<=0)
+        {            
+            return temp;
+        }
+        vector<int> result;
+        for(int i=0;i<len;i++)
+        {
+            chenji=1;
+            for(int j=0;j<len;j++)
+            {
+            if(i==j)
+                continue;
+            else
+                chenji=chenji*A[j];     
+        	}
+            result.push_back(chenji);
+        }
+        return result;
+    }

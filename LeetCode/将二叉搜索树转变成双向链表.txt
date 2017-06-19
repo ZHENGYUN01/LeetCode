@@ -1,0 +1,25 @@
+TreeNode* Convert(TreeNode* pRootOfTree)
+  {
+    if(pRootOfTree==NULL)  return NULL;
+    TreeNode *pLastNodeInList=NULL;
+    ConvertNode(pRootOfTree,pLastNodeInList);
+    TreeNode *pHead=pLastNodeInList;//找到头结点
+    while(pHead!=NULL && pHead->left!=NULL)
+      pHead=pHead->left;
+    return pHead;
+  }
+private:
+  void ConvertNode(TreeNode *pCurrent, TreeNode* &pLastNodeInList)
+  {
+    if(pCurrent==NULL)  return ;
+    if(pCurrent->left!=NULL)//转换左子树
+      ConvertNode(pCurrent->left,pLastNodeInList);
+    pCurrent->left=pLastNodeInList;//链接根结点  设置根节点的左指针、尾结点的右指针
+    if(pLastNodeInList!=NULL)
+    {
+      pLastNodeInList->right=pCurrent;
+    }
+    pLastNodeInList=pCurrent;//更新尾结点
+    
+    ConvertNode(pCurrent->right,pLastNodeInList);//转换右子树
+  }

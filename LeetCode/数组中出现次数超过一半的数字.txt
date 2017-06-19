@@ -1,0 +1,21 @@
+int MoreThanHalfNum_Solution(vector<int> numbers) {
+    	int len=numbers.size();
+        if(len<=0)
+            return 0;
+        int count=1;
+        for(int i=0;i<len-1;i++)
+        {
+            count=1;
+            for(int j=i+1;j<len;j++)
+            {
+            if(numbers[i]==numbers[j])
+                count++;
+            }
+            if(count>(len/2))
+                return numbers[i];
+        }
+        if(len==1)
+            return numbers[0];
+        else 
+        	return 0;
+    }

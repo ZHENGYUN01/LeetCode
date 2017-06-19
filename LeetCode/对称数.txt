@@ -1,0 +1,23 @@
+
+bool isSymmetrical(TreeNode* pRoot)
+    {
+
+        if(pRoot==NULL)
+        return true;
+        return ischeck(pRoot->left,pRoot->right);
+    }
+    bool ischeck(TreeNode *p,TreeNode *q)
+    {
+        if(p==NULL&&q==NULL)return true;
+        if(p==NULL&&q!=NULL)return false;
+        if(p!=NULL&&q==NULL)return false;
+        if(p!=NULL&&q!=NULL)
+        {
+             if(p->val==q->val)
+             {
+                  return ischeck(p->left,q->right)&&ischeck(p->right,q->left);
+             }
+              return false;          
+        }
+        return false;
+    }

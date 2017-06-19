@@ -1,0 +1,20 @@
+stack<int> s,q;
+    void push(int value) {
+        s.push(value);
+        if(q.size()==0||q.top()>value)
+            q.push(value);
+        else
+            q.push(q.top());
+    }
+    void pop() {
+        q.pop();
+        s.pop();
+        
+    }
+    int top() {
+        return s.top();
+        
+    }
+    int min() {
+        return q.top();
+       

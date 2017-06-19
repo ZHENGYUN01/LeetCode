@@ -1,0 +1,63 @@
+//小孩子的编号：0-(n-1)
+//喊的数字：1-m
+int LastRemaining_Solution(unsigned int n, unsigned int m)
+{
+	vector<int>data;
+	int len=n;
+    int i=0;
+    if(n<=0||m==0)
+        return -1;
+	for(i=0;i<n;i++)
+		data.push_back(i);
+	vector<int>::iterator it = data.begin();
+	int t=1;
+	bool first=true;
+	while(len>1)
+	{
+		if (first==true)
+		{
+			for(i=1;i<m;i++)
+			{
+				
+				if(t==data.size())
+				{
+					it=data.begin(); 
+					t=1;
+					continue;
+				}
+				t++;
+				it++;
+			}
+			
+			it=data.erase(it);
+			it--;
+			t--;
+			//int length=data.size();
+			len--;
+			first=false;
+		} 
+		else
+		{
+		}
+		for(i=1;i<m+1;i++)
+		{
+			
+			if(t==data.size())
+			{
+				it=data.begin(); 
+				t=1;
+				continue;
+			}
+            t++;
+			it++;
+		}
+
+		it=data.erase(it);
+		it--;
+		t--;
+		//int length=data.size();
+		len--;
+
+	}
+	return data[0];
+}

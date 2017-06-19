@@ -1,0 +1,44 @@
+vector<int> FindNumbersWithSum(vector<int> array,int sum) {
+	int len=array.size();
+	vector<int> result;
+	int count=0;
+	int temp1,temp2;
+	for (int i=0;i<len-1;i++)
+	{
+		for (int j=i+1;j<len;j++)
+		{
+			if (array[i]+array[j]==sum)
+			{
+				
+				count++;
+				temp1=array[i]>array[j]?array[j]:array[i];//temp1存放较小的
+				temp2=array[i]<array[j]?array[j]:array[i];
+				result.push_back(temp1);
+				result.push_back(temp2);
+			}
+		}
+	}
+	if(count==0)
+		return result;
+	else
+	{
+		int Min=result[0]*result[1];
+		int i=0;
+		for (;count>0;count--)
+		{
+			if(result[i]*result[i+1]<=Min)
+			{
+				temp1=result[i];
+				temp2=result[i+1];
+			}
+
+			i=i+2;
+		}
+		vector<int>min;
+		min.push_back(temp1);
+		min.push_back(temp2);
+		return min;
+
+	}
+		
+    }

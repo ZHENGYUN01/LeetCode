@@ -1,0 +1,16 @@
+queue<TreeNode *> Q;  
+        vector<int> result;  
+        if(root==NULL)return result;  
+        Q.push(root);  
+        while(!Q.empty())  
+        {  
+            TreeNode* p = Q.front();  
+            Q.pop();  
+            result.push_back(p->val);  
+            if(p->left!=NULL)  
+                Q.push(p->left);  
+            if(p->right!=NULL)  
+                Q.push(p->right);  
+        }  
+        return result;
+

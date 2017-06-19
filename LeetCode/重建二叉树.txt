@@ -1,0 +1,57 @@
+struct TreeNode* reConstructBinaryTree(vector<int> pre,vector<int> in) {
+	int lenPre=pre.size();
+	int lenIn=in.size();
+	if(lenPre<=0||lenIn<=0)
+		return NULL;
+	
+	vector<int>::iterator PreStart;
+	vector<int>::iterator PreEnd;
+	vector<int>::iterator InStart;
+	vector<int>::iterator InEnd;
+	PreStart=pre.begin();
+	PreEnd=pre.end();
+	InStart=in.begin();
+	InEnd=in.end();
+	
+	
+	TreeNode* root=new TreeNode(*PreStart);
+	root->val=*PreStart;
+	root->left=NULL;
+	root->right=NULL;
+	
+	vector<int>::iterator temp;
+	
+	temp=InStart;
+	while(temp<InEnd&&*temp!=*PreStart)
+	{
+		temp++;
+	}
+	int leftlength,rightlength;
+	leftlength=temp-InStart;
+	rightlength=InEnd-temp-1;
+	if(leftlength>0)
+	{
+		vector<int> leftpre,leftin;
+		
+		for(int i=0;i<leftlength;i++)
+		{
+			leftpre.push_back(*(PreStart+i+1));
+			leftin.push_back(*(InStart+i));    
+		}
+		
+		root->left=reConstructBinaryTree(leftpre,leftin);
+	}
+	if(leftlength<(PreEnd-PreStart))
+	{
+		vector<int> rightpre,rightin;
+		for(int j=0;j<rightlength;j++)
+		{
+			rightpre.push_back(*(PreStart+leftlength+j+1));
+			rightin.push_back(*(InStart+leftlength+j+1));
+		}
+		root->right=reConstructBinaryTree(rightpre,rightin);
+		
+	}
+	
+	return root;
+}

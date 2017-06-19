@@ -1,0 +1,36 @@
+void FindNumsAppearOnce(vector<int> data,int* num1,int *num2) {
+		int len=data.size();
+		//t beg=data.front();
+		//t las=data.back();
+        int i;
+		vector<int>::iterator it=data.begin();
+        int count[10000]={0};
+        if(len<2)
+            return;       
+        
+          for(i=0;i<len;i++){
+            it=data.begin();
+			count[i]=0;
+            for(int j=0;j<len;j++){
+                if(*it!=data[i])
+                    it++;
+                else
+				{
+					it++;
+                    count[i]++;
+                }
+			}
+          }	
+		bool flag=false;
+		for(i=0;i<len;i++){
+			if(count[i]==1&&flag==false)
+				{
+    				*num1=data[i];
+    		   		flag=true;
+    				continue;
+				}
+            if(count[i]==1){
+                *num2=data[i];
+            }
+		}
+    }

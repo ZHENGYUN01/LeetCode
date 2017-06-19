@@ -1,0 +1,25 @@
+vector<int> maxInWindows(const vector<int>& num, unsigned int size)
+    {
+        int len=num.size();
+        int maxnum;
+        if(len<size||size<=0||len<=0)
+           { vector<int> temp={};
+            return temp;
+           }
+        vector<int> result;
+        for(int i=0;i<=len-size;i++)
+        {
+            maxnum=num[i];
+            for(int j=i+1;j<size+i;j++)
+            {
+                if(num[j]>maxnum)
+                    maxnum=num[j];
+                
+                
+            }
+            result.push_back(maxnum);
+  
+        }
+        return result;
+        
+    }

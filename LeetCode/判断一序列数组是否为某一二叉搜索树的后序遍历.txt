@@ -1,0 +1,32 @@
+bool VerifySquenceOfBST(vector<int> sequence) {
+		if(sequence.empty())
+            return false;
+        int len=sequence.size();
+        int i=0;
+        vector<int> leftside;
+        vector<int> rightside;
+        
+        for(;i<len-1;i++)
+        {
+            if(sequence[i]<sequence[len-1])
+                leftside.push_back(sequence[i]);
+            else
+                break;
+        }
+        for(;i<len-1;i++)
+        {
+            if(sequence[i]>sequence[len-1])
+                rightside.push_back(sequence[i]);
+            else
+                return false;
+            
+        }
+        
+        bool left=true,right=true;
+        if(!leftside.empty())
+            left=VerifySquenceOfBST(leftside);
+        if(!rightside.empty())
+            right=VerifySquenceOfBST(rightside);
+        return left&&right;
+        
+    }

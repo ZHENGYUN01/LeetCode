@@ -1,0 +1,55 @@
+void scanDigits(char **st)  
+{  
+	while(**st!='\0' && **st>='0' && **st<='9')  
+	{  
+		++(*st);  
+	}  
+}  
+bool isExponential(char **st)  
+{  
+	++(*st);  
+	if(**st=='+'||**st=='-') ++(*st);  
+	if(**st=='\0') {return false;}  
+	scanDigits(st);  
+	
+	if(**st=='\0'){return true;}  
+	else {return false;}  
+}  
+  
+
+bool isNumeric(char* string)  
+{  
+	if(string==NULL) return false;  
+	
+	if(*string=='+'||*string=='-') ++string;  
+	
+	if(*string=='\0') return false;  
+	
+	bool bo=true;  
+	scanDigits(&string);  
+	if(*string!='\0')  
+	{  
+		if(*string=='.')  
+		{  
+			++string;  
+			scanDigits(&string);  
+			if(*string=='e'||*string=='E')  
+			{  
+				if(*(string-1)>='0'&&*(string-1)<='9')  
+					bo=isExponential(&string);  
+				else bo=false;  
+			}  
+		}  
+		else if(*string=='e'||*string=='E')  
+		{  
+			if(*(string-1)>='0'&&*(string-1)<='9')  
+				bo=isExponential(&string);  
+			else bo=false;  
+		}  
+		else bo=false;  
+		
+	}  
+	
+	return *string=='\0' && bo;  
+	
+}    

@@ -1,0 +1,24 @@
+int FirstNotRepeatingChar(string str) {
+        int len=str.size();
+		//int count[10000];
+        if(len<0)
+            return -1;
+        char *ptr=const_cast<char *>(str.c_str());
+        for(int i=0;i<len;i++){
+            char *dup=const_cast<char *>(str.c_str());
+            int count=0;
+            for(int j=0;j<len;j++){
+                if(*dup!=ptr[i])
+                    dup++;
+                else
+				{
+					dup++;
+                    count++;
+                }
+			}
+			if(count==1)
+               return i;
+			
+            }
+        return -1;
+}

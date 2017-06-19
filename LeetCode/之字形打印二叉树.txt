@@ -1,0 +1,75 @@
+vector<vector<int> > Print(TreeNode* pRoot) {
+        vector<TreeNode*> tmp;
+        vector<TreeNode*> Q;
+        vector<vector<int> > ans;
+        vector<int> path;
+        
+        bool leftToright=true;
+        bool leftTorightforQ=true;
+        
+            if(pRoot==NULL)
+                return ans;
+            Q.push_back(pRoot);
+            
+            while(!Q.empty())
+			{
+                int Qlen=Q.size();
+                if(leftTorightforQ==true)
+                {
+				for(int i=0;i<Qlen;i++)
+				{
+					TreeNode *pNode = Q[i];
+                   
+					path.push_back(pNode->val);
+					//Q.pop();
+					if(pNode->left)
+						tmp.push_back(pNode->left);
+					if(pNode->right)
+						tmp.push_back(pNode->right);
+				}
+                    leftTorightforQ=false;
+                }
+                else
+                {
+                    for(int i=0;i<Qlen;i++)
+				{
+					TreeNode *pNode = Q[Qlen-i-1];
+                    TreeNode *p=Q[i];
+					path.push_back(p->val);
+					//Q.pop();
+					if(pNode->left)
+						tmp.push_back(pNode->left);
+					if(pNode->right)
+						tmp.push_back(pNode->right);
+				}
+                    leftTorightforQ=true;
+                }
+				ans.push_back(path);
+				path.clear();
+                Q.clear();
+				
+                int len=tmp.size();
+                if(leftToright==false)
+                {
+                    for(int i=0;i<len;i++)
+                    {    	
+                        Q.push_back(tmp[i]);
+
+                    }
+                    leftToright=true;
+                }
+                else
+                {
+                    for(int i=0;i<len;i++)
+                    {
+                        Q.push_back(tmp[len-1-i]);
+                        
+                    }	
+                	leftToright=false;
+                }
+                tmp.clear();
+   	
+			}
+			return ans;
+    }
+    

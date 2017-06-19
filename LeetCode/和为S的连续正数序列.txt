@@ -1,0 +1,39 @@
+vector<vector<int> > FindContinuousSequence(int sum) {
+	int he=0;
+	int temp;
+    vector<vector<int> > result;
+	vector<int> sery;
+	if(sum==0)
+    {
+        sery.push_back(sum);
+        result.push_back(sery);
+    	return result;
+    }
+	
+	for(int i=1;i<=sum/2;i++)
+	{
+		
+		temp=i;
+		he=0;
+		while(he<=sum)
+		{
+			if(he==sum)
+			{
+				sery.clear();
+				for(int j=i;j<temp;j++)
+                    sery.push_back(j);
+				
+				result.push_back(sery);
+			}
+			
+			
+			he=he+temp;
+			temp++;
+		}
+		
+		
+		
+	}
+	return result;
+	
+    }

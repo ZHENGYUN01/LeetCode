@@ -1,0 +1,37 @@
+bool IsPopOrder(vector<int> pushV,vector<int> popV) {
+	int len_pushV=pushV.size();
+	int len_popV=popV.size();
+	if(len_pushV<=0||len_popV<=0)
+		return false;
+	
+	stack<int> s;//¸¨ÖúÕ»
+	
+	vector<int>::iterator it_push=pushV.begin();
+	vector<int>::iterator it_pop=popV.begin();
+	int index_pushV=0;
+	int index_popV=0;	
+	s.push(pushV[0]);
+	index_pushV++;
+
+	
+	while(index_popV<len_popV)
+	{
+		//cout<<*(it_pop);
+		while(s.top()!=popV[index_popV]&&index_pushV<len_pushV)
+		{
+			s.push(pushV[index_pushV]);
+			//cout<<endl<<*(it_push)<<endl;
+			index_pushV++; 
+			
+		}
+		
+		if(s.top()==popV[index_popV])
+		{
+			s.pop();
+			index_popV++;
+		}
+		else
+			return false;         
+	}
+	return true;
+    }

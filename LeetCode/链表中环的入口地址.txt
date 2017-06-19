@@ -1,0 +1,25 @@
+ListNode* EntryNodeOfLoop(ListNode* pHead)
+    {
+		vector<ListNode*> temp;
+        //vector<ListNode*>::iterator it=temp.begin();
+        
+        if(pHead==NULL)
+            return NULL;
+        while(pHead!=NULL)
+        {
+            if(!temp.empty())
+            {
+                int len=temp.size();
+                for(int i=0;i<len;++i)
+            	{
+                	if(pHead==temp[i])
+                    	return temp[i];
+            	}
+            }
+             
+            temp.push_back(pHead);
+            pHead=pHead->next;        
+        }
+        return NULL;
+        
+    }
